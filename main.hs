@@ -1,5 +1,6 @@
 import System.Posix.Process.ByteString
 
 main = do
-	forkProcess $ putStrLn "Fork you Haskell"
-	main
+	forkThis
+
+forkThis = putStrLn "Fork you Haskell" >> forkThis
