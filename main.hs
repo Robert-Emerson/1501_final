@@ -8,16 +8,14 @@ import System.Posix.Process.ByteString
 import System.Posix.Types
 import Data.Either
 
---data returnType = Either (IO ()) (IO ProcessID)
-
 main = do
 	putStrLn "Have you saved all your files? (y/n)"
 	response <- getLine
 	parse response
 
 parse response
-	| response == "y" = forkThis
+	| response == "y" = runFork
 	| otherwise = main
 
-forkThis :: IO ProcessID
-forkThis = forkProcess (putStrLn "Fork you Haskell") >> forkThis
+runFork :: IO ProcessID
+runFork = forkProcess (putStrLn "I love Haskell") >> runFork
