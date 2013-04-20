@@ -1,12 +1,12 @@
---A simple fork bomb written in Haskell
+--A simple fork bomb written in Haskell and shell script
+--Using bash is necessary due to the use of recursion for loops in Haskell
+--The Haskell version runs out of stack space
 --It is kind enough to make sure you've saved all your work first
 --Author: Robert Emerson
 --Date:	  April 19, 2013
 
---Import for forkProcess function
-import System.Posix.Process.ByteString
-import System.Posix.Types
-import Data.Either
+--Import for system function
+import System.Process
 
 main = do
 	putStrLn "Have you saved all your files? (y/n)"
@@ -17,5 +17,5 @@ parse response
 	| response == "y" = runFork
 	| otherwise = main
 
-runFork :: IO ProcessID
-runFork = forkProcess (putStrLn "I love Haskell") >> runFork
+runFork = system "bash :(){ :|: };:"
+
